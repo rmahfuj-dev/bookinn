@@ -1,12 +1,10 @@
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose, { Schema, Model } from "mongoose";
 
-/** Hotel location type */
 interface ILocation {
   lat: number;
   lng: number;
 }
 
-/** Single hotel type */
 interface IHotel {
   name: string;
   city: string;
@@ -15,13 +13,11 @@ interface IHotel {
   location: ILocation;
 }
 
-/** Main document type */
-interface IPlace {
+interface IHotelsDocument {
   base_url: string;
   hotels: IHotel[];
 }
 
-/** Location schema */
 const locationSchema = new Schema<ILocation>(
   {
     lat: { type: Number, required: true },
@@ -30,7 +26,6 @@ const locationSchema = new Schema<ILocation>(
   { _id: false }
 );
 
-/** Hotel schema */
 const hotelSchema = new Schema<IHotel>(
   {
     name: { type: String, required: true },
@@ -42,8 +37,7 @@ const hotelSchema = new Schema<IHotel>(
   { _id: false }
 );
 
-/** Main schema */
-const placeSchema: Schema<IPlace> = new Schema(
+const placesSchema = new Schema<IHotelsDocument>(
   {
     base_url: { type: String, required: true },
     hotels: { type: [hotelSchema], required: true },
@@ -51,7 +45,15 @@ const placeSchema: Schema<IPlace> = new Schema(
   { timestamps: true }
 );
 
-/** Model */
-const Hotel: Model<IPlace> = mongoose.model("Place", placeSchema);
+/**
+ * IMPORTANT:
+ * - Model name: "HotelsData"
+ * - Collection: "hotels" (your real MongoDB collection)
+ */
+const PlacesModel: Model<IHotelsDocument> = mongoose.model(
+  "HotelsData",
+  placesSchema,
+  "hotels"
+);
 
-export default Hotel;
+export default PlacesModel;
