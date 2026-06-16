@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { getPlaces } from "../controllers/place.controller.js";
+import {getPlaces } from "../controllers/place.controller.js";
 
 const router: Router = express.Router();
 

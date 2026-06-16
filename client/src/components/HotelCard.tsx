@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+const HotelCard = () => {
+  return <div>HotelCard</div>;
+};
 
-const HotelCard = (props: Props) => {
-  return (
-    <div>HotelCard</div>
-  )
-}
-
-export default HotelCard
+export default HotelCard;
