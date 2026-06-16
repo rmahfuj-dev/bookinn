@@ -7,13 +7,12 @@ import { Outlet } from 'react-router'
 
 const Layout = () => {
   return (<>
-  <Navbar />
-    <main className='min-h-screen'>
-<Outlet />
+    <Navbar />
+    <main className=''>
+      <Outlet />
     </main>
-    <Footer />    
   </>
-  
+
   )
 }
 

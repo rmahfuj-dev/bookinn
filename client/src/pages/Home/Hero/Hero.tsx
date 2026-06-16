@@ -1,6 +1,6 @@
 import React from "react";
-import herobg from "../../../../src/assets/images/hero.webp";
-
+import herobg from '@/assets/images/hero.webp'
+import SearchMenu from "./SearchMenu";
 const Hero = () => {
   return (
     <section
